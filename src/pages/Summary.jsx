@@ -55,7 +55,8 @@ const Summary = () => {
   }
 
   return (
-    <div className="md:w-9/12 relative sm:w-11/12  mx-auto flex flex-col justify-center items-center  ">
+    <div className="grad">
+      <div className="md:w-9/12 relative sm:w-11/12  mx-auto flex flex-col justify-center items-center  ">
       <div className="py-5 flex flex-col gap-5">
         <button
           onClick={() => navigate(-1)}
@@ -68,19 +69,20 @@ const Summary = () => {
         ) : (
           <motion.div initial={{opacity:0,x:-100}} animate={{opacity:1,x:0,transition:{duration:1}}} className="relative">
             <div className=" w-full flex sm:flex-row flex-col ">
-              <div className="">
+              <div className=" rounded-lg overflow-hidden">
                 <img
                   src={data.show.image?.original}
                   className=" h-[400px] w-[1800px] "
                 />
               </div>
-              <div className="flex flex-col justify-center items-center gap-5 px-5 sm:py-0 py-5  bg-black text-white">
+              <div className="flex flex-col justify-center items-center gap-5 px-5 sm:py-0 py-5   text-white">
                 <div className="flex flex-col gap-7">
-                  <p className="text-2xl font-bold">{data.show.name}</p>
+                  <p className="text-2xl font-bold">{`${data.show.name}
+                   (${data.show.premiered.split("-").splice(0,1)})`}</p>
                   <p>Language : {data.show.language}</p>
                   <p className="text-sm">
-                    {data.show.summary.split(" ").length > 15
-                      ? data.show.summary.split(" ").splice(0, 35).join(" ") +
+                    {data.show.summary.split(" ").length > 35
+                      ? data.show.summary.split(" ").splice(0, 50).join(" ") +
                         "..."
                       : data.show.summary}
                   </p>
@@ -91,7 +93,7 @@ const Summary = () => {
                     >
                      {showform?"Cancel" : " Book Tickets"}
                     </button>
-                    <p>{data.show.rating.average}/10</p>
+                    <p>Rating : ({data.show.rating.average}/10)</p>
                   </div>
                 </div>
                 {/* <div className="w-full "> */}
@@ -179,6 +181,9 @@ const Summary = () => {
           </motion.form>
         )}
       </AnimatePresence>
+
+    
+    </div>
     </div>
   );
 };

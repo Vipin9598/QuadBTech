@@ -115,6 +115,11 @@ const Summary = () => {
             onSubmit={submitHandler}
             className={`flex flex-col   gap-5  h-fit p-2 bg-white border rounded-md px-2   bottom-0 sm:w-[400px] w-auto`}
           >
+            <div>
+            <p className="text-2xl font-bold text-black">{`${data.show.name}
+                   (${data.show.premiered.split("-").splice(0,1)})`}</p>
+                  <p className="text-black">Language : {data.show.language}</p>
+            </div>
             <div className="flex flex-col  gap-5">
               <div className="flex flex-col gap-1 ">
                 <label htmlFor="name" className="text-black">
